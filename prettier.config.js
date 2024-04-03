@@ -1,5 +1,4 @@
 // prettier.config.js
 module.exports = {
-  plugins: ['prettier-plugin-tailwindcss'],
-  htmlWhitespaceSensitivity: "ignore"
+  plugins: ['prettier-plugin-tailwindcss']
 }
