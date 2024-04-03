@@ -29,9 +29,9 @@ dependencies:
   '@angular/router':
     specifier: ^17.3.0
     version: 17.3.2(@angular/common@17.3.2)(@angular/core@17.3.2)(@angular/platform-browser@17.3.2)(rxjs@7.8.1)
-  '@types/node-notifier':
-    specifier: 8.0.5
-    version: 8.0.5
+  notifier-js:
+    specifier: ^1.0.0
+    version: 1.0.0
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -100,9 +100,6 @@ devDependencies:
   karma-jasmine-html-reporter:
     specifier: ~2.1.0
     version: 2.1.0(jasmine-core@5.1.2)(karma-jasmine@5.1.0)(karma@6.4.3)
-  notifier-js:
-    specifier: ^1.0.0
-    version: 1.0.0
   postcss:
     specifier: ^8.4.38
     version: 8.4.38
@@ -2990,16 +2987,11 @@ packages:
       '@types/node': 20.12.2
     dev: true
 
-  /@types/node-notifier@8.0.5:
-    resolution: {integrity: sha512-LX7+8MtTsv6szumAp6WOy87nqMEdGhhry/Qfprjm1Ma6REjVzeF7SCyvPtp5RaF6IkXCS9V4ra8g5fwvf2ZAYg==}
-    dependencies:
-      '@types/node': 20.12.2
-    dev: false
-
   /@types/node@20.12.2:
     resolution: {integrity: sha512-zQ0NYO87hyN6Xrclcqp7f8ZbXNbRfoGWNcMvHTPQp9UUrwI0mI7XBz+cu7/W6/VClYo2g63B0cjull/srU7LgQ==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
 
   /@types/qs@6.9.14:
     resolution: {integrity: sha512-5khscbd3SwWMhFqylJBLQ0zIu7c1K6Vz0uBIt915BI3zV0q1nfjRQD3RqSBcPaO6PHEF4ov/t9y89fSiyThlPA==}
@@ -6403,7 +6395,7 @@ packages:
 
   /notifier-js@1.0.0:
     resolution: {integrity: sha512-eDpNYBC97XR2VxwbOpfiWQmIn9l2/zcXxHHaBdD2/qGFy/V2PYvnzPVXusXKjDLltgtdVJOqy2TSquDOG5rcXw==}
-    dev: true
+    dev: false
 
   /npm-bundled@3.0.0:
     resolution: {integrity: sha512-Vq0eyEQy+elFpzsKjMss9kxqb9tG3YHg4dsyWuUENuzvSUWe1TCnW/vV9FkhvBk/brEDoDiVd+M1Btosa6ImdQ==}
@@ -8184,6 +8176,7 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
 
   /undici@6.7.1:
     resolution: {integrity: sha512-+Wtb9bAQw6HYWzCnxrPTMVEV3Q1QjYanI0E4q02ehReMuquQdLTEFEYbfs7hcImVYKcQkWSwT6buEmSVIiDDtQ==}
