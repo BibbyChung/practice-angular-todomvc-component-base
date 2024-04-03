@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+--- notifier ---
+https://github.com/csilva2810/notifier/blob/master/css/notifier.css 
+*/
+// @import '~notifier-js/dist/css/notifier.css';
+
+@import url(../node_modules/notifier-js/dist/css/notifier.css);
+
+// .notifier-container {
+//   @apply font-sans;
+// }
+
+// .notifier.info {
+//   @apply border-info;
+// }
+
+// .notifier.success {
+//   @apply border-success;
+// }
+
+// .notifier.warning {
+//   @apply border-warning;
+// }
+
+// .notifier.danger {
+//   @apply border-red-500;
+// }
+
+// application
+
+.btn {
+  @apply rounded px-2 py-1 border border-gray-300;
+  @apply text-black bg-gray-100;
+}
