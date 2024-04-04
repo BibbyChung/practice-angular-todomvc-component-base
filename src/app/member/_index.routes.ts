@@ -27,6 +27,11 @@ const routes: Routes = [
         loadComponent: () =>
           import('./hello-world.component').then((c) => c.HelloWorldComponent),
       },
+      {
+        path: 'todomvc',
+        loadComponent: () =>
+          import('./angular-todos/app.component').then((c) => c.TodosComponent),
+      },
     ],
   },
 ];

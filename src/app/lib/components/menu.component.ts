@@ -36,6 +36,14 @@ import { navigate } from '../services/layout.service';
           hello-world
         </a>
       </li>
+      <li>
+        <a
+          [routerLink]="['/member/todomvc']"
+          routerLinkActive="router-link-active"
+        >
+          todomvc
+        </a>
+      </li>
       <li class="flex items-center">
         <button (click)="logout$.next(true)" class="btn">logout</button>
       </li>
