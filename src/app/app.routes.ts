@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'member/home',
+    redirectTo: 'guest/bootstrap',
   },
   {
     path: 'member',

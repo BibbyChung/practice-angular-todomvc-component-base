@@ -13,6 +13,11 @@ const routes: Routes = [
         loadComponent: () =>
           import('./login.component').then((c) => c.LoginComponent),
       },
+      {
+        path: 'bootstrap',
+        loadComponent: () =>
+          import('../guest/bootstrap.component').then((c) => c.BootstrapComponent),
+      },
     ],
   },
 ];

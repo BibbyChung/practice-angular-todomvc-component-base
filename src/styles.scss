@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+// @tailwind components;
+// @tailwind utilities;
+
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
 
 /* 
 --- notifier ---
@@ -33,10 +36,10 @@ https://github.com/csilva2810/notifier/blob/master/css/notifier.css
 
 // application
 
-.btn {
-  @apply rounded px-2 py-1 border border-gray-300;
-  @apply text-black bg-gray-100;
-}
+// .btn {
+//   @apply rounded px-2 py-1 border border-gray-300;
+//   @apply text-black bg-gray-100;
+// }
 
 // --- todomvc ---
 

@@ -4,10 +4,16 @@ import { Router, RouterOutlet } from '@angular/router';
 import { ModalContainerComponent } from './lib/components/modal/modal-container.component';
 import {
   setIsClient,
+  setJquery,
   setRender,
   setRouter,
   setWindow,
 } from './lib/services/layout.service';
+
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery/dist/jquery';
+import 'popper.js/dist/popper';
+import * as jq from 'jquery';
 
 @Component({
   selector: 'bb-root',
@@ -31,5 +37,6 @@ export class AppComponent {
     setWindow(this.document.defaultView?.window ?? null);
     setRender(this.render);
     setRouter(this.router);
+    setJquery(jq.default);
   }
 }

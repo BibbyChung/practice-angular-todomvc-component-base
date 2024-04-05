@@ -94,6 +94,16 @@ export const notify = (
   );
 };
 
+// jquery
+const jquery$ = getBehaviorSubject<JQueryStatic | null>(null);
+export const setJquery = (jquery: JQueryStatic) => jquery$.next(jquery);
+export const getJquery = () =>
+  jquery$.pipe(
+    filter((a) => !!a),
+    map((a) => a!),
+  );
+
+
 // others
 export const preventBodyScroll = (isOpen: boolean) =>
   combineLatest([getWindow(), getRender()]).pipe(

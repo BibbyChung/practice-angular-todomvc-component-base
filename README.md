@@ -1,3 +1,44 @@
+# README
+
+```bash
+
+pnpm add bootstrap@4.6.2 jquery@3.5.1 popper.js@1.16.1 @types/jquery@3.5.29
+
+```
+
+```ts
+
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery/dist/jquery';
+import 'popper.js/dist/popper';
+import * as jq from 'jquery';
+
+setJquery(jq.default);
+
+
+// jquery
+const jquery$ = getBehaviorSubject<JQueryStatic | null>(null);
+export const setJquery = (jquery: JQueryStatic) => jquery$.next(jquery);
+export const getJquery = () =>
+  jquery$.pipe(
+    filter((a) => !!a),
+    map((a) => a!),
+  );
+
+```
+
+```scss
+
+@tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+```
+
+---
+
 # Ng17
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
