@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,6 @@ export const appConfig: ApplicationConfig = {
       routes,
       withComponentInputBinding(),
       withPreloading(PreloadAllModules),
-    ),
+    ), provideClientHydration(),
   ],
 };

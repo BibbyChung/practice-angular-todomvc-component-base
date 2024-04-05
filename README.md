@@ -1,3 +1,22 @@
+# readme
+
+```bash
+
+ng add @angular/ssr
+
+pnpm run build
+
+# ssr
+pnpm run serve:ssr:ng17
+
+# ssg
+# https://angular.io/guide/prerendering ()
+litserver dist/ng17/browser
+
+```
+
+---
+
 # Ng17
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
