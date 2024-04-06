@@ -1,11 +1,14 @@
 import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Component, PLATFORM_ID, Renderer2, inject } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router, RouterOutlet } from '@angular/router';
 import { ModalContainerComponent } from './lib/components/modal/modal-container.component';
 import {
   setIsClient,
+  setMetaSer,
   setRender,
   setRouter,
+  setTitleSer,
   setWindow,
 } from './lib/services/layout.service';
 
@@ -25,11 +28,15 @@ export class AppComponent {
   document = inject(DOCUMENT);
   render = inject(Renderer2);
   router = inject(Router);
+  title = inject(Title);
+  meta = inject(Meta);
 
   constructor() {
     setIsClient(isPlatformBrowser(this.platformId));
     setWindow(this.document.defaultView?.window ?? null);
     setRender(this.render);
     setRouter(this.router);
+    setTitleSer(this.title);
+    setMetaSer(this.meta);
   }
 }

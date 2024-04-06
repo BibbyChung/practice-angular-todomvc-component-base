@@ -1,3 +1,4 @@
+import { setTDK } from './../lib/services/layout.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -28,6 +29,14 @@ export class HomeComponent {
   protected confirm$ = getSubject<boolean>();
   protected id = input<number>(0);
   protected envSetting = getEnvSetting();
+
+  tdkSub = setTDK({
+    title: 'home title',
+    description: 'home description',
+    keywords: ['11', '22', '33'],
+  })
+    .pipe(takeUntilDestroyed())
+    .subscribe();
 
   confirmSub = this.confirm$
     .pipe(

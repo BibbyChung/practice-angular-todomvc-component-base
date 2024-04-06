@@ -12,6 +12,7 @@ import {
   tap,
 } from 'rxjs';
 import { getBehaviorSubject } from '../common/utils';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 const isClient$ = getBehaviorSubject(true);
 export const setIsClient = (isClient: boolean) => isClient$.next(isClient);
@@ -58,7 +59,6 @@ export const navigateByNative = (path: string) =>
     }),
   );
 
-
 // modal
 export type ModalPropsType = Record<string | 'width' | 'btnSubmit$', unknown>;
 export type ModalType<T extends ModalPropsType> = {
@@ -93,6 +93,43 @@ export const notify = (
     tap((o) => o.default.show(tt, text, type, '', timeout)),
   );
 };
+
+// tdk
+export type TDKType = {
+  title: string;
+  description?: string;
+  keywords?: string[];
+};
+const title$ = getBehaviorSubject<Title | null>(null);
+export const setTitleSer = (title: Title) => title$.next(title);
+const meta$ = getBehaviorSubject<Meta | null>(null);
+export const setMetaSer = (meta: Meta) => meta$.next(meta);
+export const setMeta = (tags: MetaDefinition[]) =>
+  meta$.pipe(
+    filter((a) => !!a),
+    map((a) => a!.addTags(tags)),
+  );
+export const setTDK = (info: TDKType) =>
+  combineLatest([
+    title$.pipe(filter((t) => !!t)),
+    meta$.pipe(filter((m) => !!m)),
+  ]).pipe(
+    tap(([t, m]) => {
+      t!.setTitle(info.title);
+      if (info.description) {
+        m!.updateTag({
+          name: 'description',
+          content: info.description,
+        });
+      }
+      if (info.keywords) {
+        m!.updateTag({
+          name: 'keywords',
+          content: info.keywords.join(', '),
+        });
+      }
+    }),
+  );
 
 // others
 export const preventBodyScroll = (isOpen: boolean) =>
