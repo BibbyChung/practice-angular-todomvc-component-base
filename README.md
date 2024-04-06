@@ -1,3 +1,39 @@
+# readme
+
+```bash
+
+# new project
+ng new <projectName> \
+  --standalone=true \
+  --prefix=bb \
+  --routing=true \
+  --style=scss \
+  --skip-tests=true \
+  --skip-git=true \
+  --inline-style=true \
+  --inline-template=true \
+  --package-manager=pnpm \
+  --ssr=false
+
+# tailwindcss
+# https://tailwindcss.com/docs/guides/angular
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+
+# eslint 
+# https://github.com/angular-eslint/angular-eslint
+ng add @angular-eslint/schematics
+
+# prettier
+# prettier of vscode extension
+# "prettier.bracketSameLine": true,
+# "prettier.htmlWhitespaceSensitivity": "strict",
+
+# pwa
+ng add @angular/pwa
+
+```
+
 # Ng17
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
