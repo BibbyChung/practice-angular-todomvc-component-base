@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 import { getSubject } from '../lib/common/utils';
-import { notify } from '../lib/services/layout.service';
+import { notify, setTDK } from '../lib/services/layout.service';
 
 @Component({
   selector: 'bb-about',
@@ -20,6 +20,14 @@ import { notify } from '../lib/services/layout.service';
 })
 export class AboutComponent {
   protected showSuccess$ = getSubject<boolean>();
+
+  tdkSub = setTDK({
+    title: 'about title',
+    description: 'about description',
+    keywords: ['55', '66', '77'],
+  })
+    .pipe(takeUntilDestroyed())
+    .subscribe();
 
   showSuccessSub = this.showSuccess$
     .pipe(
