@@ -6,6 +6,7 @@ export const routes: Routes = [
     pathMatch: 'full',
     // redirectTo: 'guest/tmp',
     // redirectTo: 'member/dynamic-cmp',
+    // redirectTo: 'member/ng-template',
     redirectTo: 'member/home',
     
   },

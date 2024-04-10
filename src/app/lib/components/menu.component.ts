@@ -52,6 +52,14 @@ import { navigate } from '../services/layout.service';
           dynamic-cmp
         </a>
       </li>
+      <li>
+        <a
+          [routerLink]="['/member/ng-template']"
+          routerLinkActive="router-link-active"
+        >
+          ng-template
+        </a>
+      </li>
       <li class="flex items-center">
         <button (click)="logout$.next(true)" class="btn">logout</button>
       </li>

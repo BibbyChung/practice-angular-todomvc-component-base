@@ -39,6 +39,13 @@ const routes: Routes = [
             (c) => c.DynamicCmpComponent,
           ),
       },
+      {
+        path: 'ng-template',
+        loadComponent: () =>
+          import('./ng-template/ng-template.component').then(
+            (c) => c.NgTemplateComponent,
+          ),
+      },
     ],
   },
 ];
