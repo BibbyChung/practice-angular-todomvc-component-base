@@ -32,6 +32,13 @@ const routes: Routes = [
         loadComponent: () =>
           import('./angular-todos/app.component').then((c) => c.TodosComponent),
       },
+      {
+        path: 'dynamic-cmp',
+        loadComponent: () =>
+          import('./dynamic-cmp/dynamic-cmp.component').then(
+            (c) => c.DynamicCmpComponent,
+          ),
+      },
     ],
   },
 ];

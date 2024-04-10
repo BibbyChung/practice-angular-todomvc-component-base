@@ -4,7 +4,10 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'guest/tmp',
+    // redirectTo: 'guest/tmp',
+    // redirectTo: 'member/dynamic-cmp',
+    redirectTo: 'member/home',
+    
   },
   {
     path: 'member',

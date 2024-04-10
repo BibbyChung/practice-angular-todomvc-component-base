@@ -44,6 +44,14 @@ import { navigate } from '../services/layout.service';
           todomvc
         </a>
       </li>
+      <li>
+        <a
+          [routerLink]="['/member/dynamic-cmp']"
+          routerLinkActive="router-link-active"
+        >
+          dynamic-cmp
+        </a>
+      </li>
       <li class="flex items-center">
         <button (click)="logout$.next(true)" class="btn">logout</button>
       </li>
