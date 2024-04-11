@@ -36,6 +36,16 @@ import { combineLatest, switchMap, tap } from 'rxjs';
           }
         "
       ></ng-container>
+
+      <!-- <ng-container
+        [ngTemplateOutlet]="sTmp"
+        [ngTemplateOutletContext]="{
+          $implicit: {
+            title: 's-title' + item,
+            description: 's-description' + item
+          }
+        }"
+      ></ng-container> -->
     }
 
     <hr class="my-2" />
