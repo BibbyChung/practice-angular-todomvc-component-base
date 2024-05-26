@@ -1,6 +1,6 @@
 import {
   ApplicationConfig,
-  ɵprovideZonelessChangeDetection,
+  provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import {
   PreloadAllModules,
@@ -13,7 +13,7 @@ import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    ɵprovideZonelessChangeDetection(),
+    provideExperimentalZonelessChangeDetection(),
     provideRouter(
       routes,
       withComponentInputBinding(),
