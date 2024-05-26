@@ -30,8 +30,8 @@ dependencies:
     specifier: ^18.0.0
     version: 18.0.0(@angular/common@18.0.0)(@angular/core@18.0.0)(@angular/platform-browser@18.0.0)(rxjs@7.8.1)
   '@angular/service-worker':
-    specifier: ^17.3.0
-    version: 17.3.10(@angular/common@18.0.0)(@angular/core@18.0.0)
+    specifier: ^18.0.0
+    version: 18.0.0(@angular/common@18.0.0)(@angular/core@18.0.0)
   notifier-js:
     specifier: ^1.0.0
     version: 1.0.0
@@ -48,7 +48,7 @@ dependencies:
 devDependencies:
   '@angular-devkit/build-angular':
     specifier: ^18.0.1
-    version: 18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@17.3.10)(karma@6.4.3)(tailwindcss@3.4.3)(typescript@5.4.3)
+    version: 18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@18.0.0)(karma@6.4.3)(tailwindcss@3.4.3)(typescript@5.4.3)
   '@angular-eslint/builder':
     specifier: 17.5.1
     version: 17.5.1(eslint@8.57.0)(typescript@5.4.3)
@@ -149,7 +149,7 @@ packages:
       - chokidar
     dev: true
 
-  /@angular-devkit/build-angular@18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@17.3.10)(karma@6.4.3)(tailwindcss@3.4.3)(typescript@5.4.3):
+  /@angular-devkit/build-angular@18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@18.0.0)(karma@6.4.3)(tailwindcss@3.4.3)(typescript@5.4.3):
     resolution: {integrity: sha512-FDVxR+VR0WP/lukOrnhEdy+hcGNBzqyfmrW0fyIthwP+A/gHlB3Qd/lehkeLngTjPwtBXssxuwR6BgWmpjy69Q==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -194,9 +194,9 @@ packages:
       '@angular-devkit/architect': 0.1800.1
       '@angular-devkit/build-webpack': 0.1800.1(webpack-dev-server@5.0.4)(webpack@5.91.0)
       '@angular-devkit/core': 18.0.1
-      '@angular/build': 18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@17.3.10)(less@4.2.0)(postcss@8.4.38)(tailwindcss@3.4.3)(terser@5.31.0)(typescript@5.4.3)
+      '@angular/build': 18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@18.0.0)(less@4.2.0)(postcss@8.4.38)(tailwindcss@3.4.3)(terser@5.31.0)(typescript@5.4.3)
       '@angular/compiler-cli': 18.0.0(@angular/compiler@18.0.0)(typescript@5.4.3)
-      '@angular/service-worker': 17.3.10(@angular/common@18.0.0)(@angular/core@18.0.0)
+      '@angular/service-worker': 18.0.0(@angular/common@18.0.0)(@angular/core@18.0.0)
       '@babel/core': 7.24.5
       '@babel/generator': 7.24.5
       '@babel/helper-annotate-as-pure': 7.22.5
@@ -436,7 +436,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@angular/build@18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@17.3.10)(less@4.2.0)(postcss@8.4.38)(tailwindcss@3.4.3)(terser@5.31.0)(typescript@5.4.3):
+  /@angular/build@18.0.1(@angular/compiler-cli@18.0.0)(@angular/service-worker@18.0.0)(less@4.2.0)(postcss@8.4.38)(tailwindcss@3.4.3)(terser@5.31.0)(typescript@5.4.3):
     resolution: {integrity: sha512-n2So6inJ4Prw3NOPC6keyVyFDryFNCJ4UUzmjtPOS8FyYqThWBcuXFzsUsUCFbXSUqVBZh9vxEqHqggnCAs9Og==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
@@ -465,7 +465,7 @@ packages:
       '@ampproject/remapping': 2.3.0
       '@angular-devkit/architect': 0.1800.1
       '@angular/compiler-cli': 18.0.0(@angular/compiler@18.0.0)(typescript@5.4.3)
-      '@angular/service-worker': 17.3.10(@angular/common@18.0.0)(@angular/core@18.0.0)
+      '@angular/service-worker': 18.0.0(@angular/common@18.0.0)(@angular/core@18.0.0)
       '@babel/core': 7.24.5
       '@babel/helper-annotate-as-pure': 7.22.5
       '@babel/helper-split-export-declaration': 7.24.5
@@ -652,13 +652,13 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@angular/service-worker@17.3.10(@angular/common@18.0.0)(@angular/core@18.0.0):
-    resolution: {integrity: sha512-tRoO1WrA4TxLyQK4DFtant3R93DQuGs/DIvhYZ5Tpevaj8h/gL1Uwxzj3GAyZpMSbXvETlHAK8HcwG4IkXkxBg==}
+  /@angular/service-worker@18.0.0(@angular/common@18.0.0)(@angular/core@18.0.0):
+    resolution: {integrity: sha512-mFlQ4udZOWQ9A9RmmYVQhQQgXxBYm0ts1NFnwSjkUlmECTwMAfDaJ+Vzo/ppKZozz4Oypa9GIlGCzxTJvblzyg==}
     engines: {node: ^18.13.0 || >=20.9.0}
     hasBin: true
     peerDependencies:
-      '@angular/common': 17.3.10
-      '@angular/core': 17.3.10
+      '@angular/common': 18.0.0
+      '@angular/core': 18.0.0
     dependencies:
       '@angular/common': 18.0.0(@angular/core@18.0.0)(rxjs@7.8.1)
       '@angular/core': 18.0.0(rxjs@7.8.1)(zone.js@0.14.4)
