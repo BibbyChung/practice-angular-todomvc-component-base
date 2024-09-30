@@ -19,10 +19,10 @@
     "@angular/platform-browser": "^18.2.6",
     "@angular/platform-browser-dynamic": "^18.2.6",
     "@angular/router": "^18.2.6",
-    "rxjs": "~7.8.0",
+    "notifier-js": "^1.0.0",
+    "rxjs": "~7.8.1",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.10",
-    "notifier-js": "^1.0.0"
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.6",
@@ -34,10 +34,10 @@
     "@angular/cli": "^18.2.6",
     "@angular/compiler-cli": "^18.2.6",
     "@types/jasmine": "~5.1.0",
-    "@typescript-eslint/eslint-plugin": "7.2.0",
-    "@typescript-eslint/parser": "7.2.0",
+    "@typescript-eslint/eslint-plugin": "7.11.0",
+    "@typescript-eslint/parser": "7.11.0",
     "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
+    "eslint": "8.57.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
