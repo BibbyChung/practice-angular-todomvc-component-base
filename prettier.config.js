@@ -1,4 +1,8 @@
 // prettier.config.js
 module.exports = {
-  plugins: ['prettier-plugin-tailwindcss']
-}
+  singleQuote: true,
+  trailingComma: "es5",
+  semi: false,
+  printWidth: 100,
+  plugins: ["prettier-plugin-tailwindcss"],
+};

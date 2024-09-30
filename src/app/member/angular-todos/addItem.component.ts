@@ -1,14 +1,9 @@
-import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  viewChild,
-} from '@angular/core';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { map, switchMap, tap } from 'rxjs';
-import { getSubject } from '../../lib/common/utils';
-import { addTodo } from '../../lib/services/todolist.service';
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core'
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
+import { map, switchMap, tap } from 'rxjs'
+import { getSubject } from '../../lib/common/utils'
+import { addTodo } from '../../lib/services/todolist.service'
 
 @Component({
   selector: 'bb-add-item',
@@ -26,29 +21,29 @@ import { addTodo } from '../../lib/services/todolist.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddItemComponent {
-  inputRefS = viewChild.required<ElementRef<HTMLInputElement>>('inputRef');
-  inputElem$ = toObservable(this.inputRefS).pipe(map((ref) => ref.nativeElement));
+  inputRefS = viewChild.required<ElementRef<HTMLInputElement>>('inputRef')
+  inputElem$ = toObservable(this.inputRefS).pipe(map((ref) => ref.nativeElement))
 
-  submitBtn$ = getSubject<boolean>();
+  submitBtn$ = getSubject<boolean>()
 
   submitSub = this.submitBtn$
     .pipe(
       takeUntilDestroyed(),
       switchMap(() => this.inputElem$),
       tap((inputElem) => {
-        const v: string = inputElem.value;
+        const v: string = inputElem.value
         if (v !== '') {
-          addTodo(v ?? '');
-          inputElem.value = '';
+          addTodo(v ?? '')
+          inputElem.value = ''
         }
-      }),
+      })
     )
-    .subscribe();
+    .subscribe()
 
   focusSub = this.inputElem$
     .pipe(
       takeUntilDestroyed(),
-      tap((elem) => elem.focus()),
+      tap((elem) => elem.focus())
     )
-    .subscribe();
+    .subscribe()
 }

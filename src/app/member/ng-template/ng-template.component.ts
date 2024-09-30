@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,10 +7,10 @@ import {
   ViewContainerRef,
   inject,
   viewChild,
-} from '@angular/core';
-import { getSubject, getUUID } from '../../lib/common/utils';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { combineLatest, switchMap, tap } from 'rxjs';
+} from '@angular/core'
+import { getSubject, getUUID } from '../../lib/common/utils'
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
+import { combineLatest, switchMap, tap } from 'rxjs'
 
 @Component({
   selector: 'bb-ng-template',
@@ -57,9 +57,7 @@ import { combineLatest, switchMap, tap } from 'rxjs';
       </div>
     </ng-template>
 
-    <button class="btn" (click)="cloneTmp$.next(true)">
-      create content by ng-template
-    </button>
+    <button class="btn" (click)="cloneTmp$.next(true)">create content by ng-template</button>
 
     <ng-container #vc></ng-container>
   `,
@@ -67,10 +65,10 @@ import { combineLatest, switchMap, tap } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgTemplateComponent {
-  injector = inject(Injector);
-  cloneTmp$ = getSubject<boolean>();
-  vcRef = viewChild.required('vc', { read: ViewContainerRef });
-  dTmpRef = viewChild.required('dTmp', { read: TemplateRef });
+  injector = inject(Injector)
+  cloneTmp$ = getSubject<boolean>()
+  vcRef = viewChild.required('vc', { read: ViewContainerRef })
+  dTmpRef = viewChild.required('dTmp', { read: TemplateRef })
 
   cloneTmpSub = this.cloneTmp$
     .pipe(
@@ -79,16 +77,16 @@ export class NgTemplateComponent {
         combineLatest([
           toObservable(this.vcRef, { injector: this.injector }),
           toObservable(this.dTmpRef, { injector: this.injector }),
-        ]),
+        ])
       ),
       tap(([vcRef, tmpRef]) => {
         const embeddedview = tmpRef.createEmbeddedView({
           title: `title(${getUUID()})`,
           description: '六六六...',
-        });
-        vcRef.insert(embeddedview);
-        embeddedview.markForCheck();
-      }),
+        })
+        vcRef.insert(embeddedview)
+        embeddedview.markForCheck()
+      })
     )
-    .subscribe();
+    .subscribe()
 }

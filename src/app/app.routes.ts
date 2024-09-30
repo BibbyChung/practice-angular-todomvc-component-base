@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes } from '@angular/router'
 
 export const routes: Routes = [
   {
@@ -8,7 +8,6 @@ export const routes: Routes = [
     // redirectTo: 'member/dynamic-cmp',
     // redirectTo: 'member/ng-template',
     redirectTo: 'member/home',
-    
   },
   {
     path: 'member',
@@ -22,4 +21,4 @@ export const routes: Routes = [
     path: '**',
     redirectTo: '/',
   },
-];
+]

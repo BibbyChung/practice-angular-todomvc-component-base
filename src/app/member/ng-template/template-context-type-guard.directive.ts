@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core'
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
@@ -7,13 +7,13 @@ import { Directive, Input } from '@angular/core';
 })
 export class TemplateContextTypeGuardDirective<T> {
   @Input('templateContextType')
-  type!: T;
+  type!: T
   // templateContextType = input.required<T>();
 
   static bbTemplateContextGuard<T>(
     _dir: TemplateContextTypeGuardDirective<T>,
-    ctx: unknown,
+    ctx: unknown
   ): ctx is T {
-    return true;
+    return true
   }
 }
