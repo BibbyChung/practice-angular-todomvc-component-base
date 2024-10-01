@@ -3,6 +3,7 @@ import { Component, PLATFORM_ID, Renderer2, inject } from '@angular/core'
 import { Meta, Title } from '@angular/platform-browser'
 import { Router, RouterOutlet } from '@angular/router'
 import { ModalContainerComponent } from './lib/components/modal/modal-container.component'
+import { setupI18n } from './lib/services/i18n.service'
 import {
   setIsClient,
   setMetaSer,
@@ -38,5 +39,6 @@ export class AppComponent {
     setRouter(this.router)
     setTitleSer(this.title)
     setMetaSer(this.meta)
+    setupI18n()
   }
 }

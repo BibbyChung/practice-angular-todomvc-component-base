@@ -38,6 +38,11 @@ https://github.com/csilva2810/notifier/blob/master/css/notifier.css
   @apply text-black bg-gray-100;
 }
 
+.select {
+  @apply rounded px-2 py-1 border border-gray-300;
+  @apply text-black bg-gray-100;
+}
+
 // --- todomvc ---
 
 .todoapp {

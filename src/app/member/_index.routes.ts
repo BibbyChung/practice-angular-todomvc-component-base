@@ -38,6 +38,10 @@ const routes: Routes = [
         loadComponent: () =>
           import('./ng-template/ng-template.component').then((c) => c.NgTemplateComponent),
       },
+      {
+        path: 'i18n',
+        loadComponent: () => import('./i18n.component').then((c) => c.I18nComponent),
+      },
     ],
   },
 ]

@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core'
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
 import { RouterModule } from '@angular/router'
-import { switchMap } from 'rxjs'
+import { map, switchMap, tap } from 'rxjs'
+import { setLSItem } from '../common/storage'
 import { getSubject } from '../common/utils'
-import { navigate } from '../services/layout.service'
+import { navigate, navigateByNative } from '../services/layout.service'
+import { getCurrentLng, lngMapping } from './../services/i18n.service'
 
 @Component({
   selector: 'bb-menu',
@@ -36,8 +38,18 @@ import { navigate } from '../services/layout.service'
           ng-template
         </a>
       </li>
+      <li>
+        <a [routerLink]="['/member/i18n']" routerLinkActive="router-link-active"> i18n </a>
+      </li>
       <li class="flex items-center">
         <button (click)="logout$.next(true)" class="btn">logout</button>
+      </li>
+      <li class="flex items-center">
+        <select #selectLngRef class="select ml-2" (change)="this.selectChange$.next($event)">
+          @for (item of lngMapping; track $index) {
+            <option [value]="item.name">{{ item.name }}</option>
+          }
+        </select>
       </li>
     </ul>
   `,
@@ -60,10 +72,36 @@ import { navigate } from '../services/layout.service'
 export class MenuComponent {
   protected logout$ = getSubject<boolean>()
 
+  protected selectLngRefS = viewChild.required<ElementRef<HTMLSelectElement>>('selectLngRef')
+  protected selectChange$ = getSubject<Event>()
+
+  protected lngMapping = lngMapping
+
   logoutSub = this.logout$
     .pipe(
       takeUntilDestroyed(),
       switchMap(() => navigate(['/guest/login']))
+    )
+    .subscribe()
+
+  selectLngRefSub = this.selectChange$
+    .pipe(
+      takeUntilDestroyed(),
+      tap((e) => {
+        const elem = e.target as HTMLSelectElement
+        setLSItem('i18nLng', elem.value)
+      }),
+      switchMap(() => navigateByNative('/member/i18n'))
+    )
+    .subscribe()
+
+  isReadySub = toObservable(this.selectLngRefS)
+    .pipe(
+      takeUntilDestroyed(),
+      map((elemRef) => {
+        const lng = getCurrentLng()
+        elemRef.nativeElement.value = lng.split('-')[0] ?? this.lngMapping[0].name
+      })
     )
     .subscribe()
 }
