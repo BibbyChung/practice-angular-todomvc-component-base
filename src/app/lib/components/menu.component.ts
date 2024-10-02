@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { RouterModule } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { getSubject } from '../common/utils';
-import { navigate } from '../services/layout.service';
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { RouterModule } from '@angular/router'
+import { switchMap } from 'rxjs'
+import { getSubject } from '../common/utils'
+import { navigate } from '../services/layout.service'
 
 @Component({
   selector: 'bb-menu',
@@ -13,35 +13,27 @@ import { navigate } from '../services/layout.service';
   template: `
     <ul class="flex text-blue-400">
       <li>
-        <a
-          [routerLink]="['/member/home']"
-          routerLinkActive="router-link-active"
-        >
-          home
-        </a>
+        <a [routerLink]="['/member/home']" routerLinkActive="router-link-active"> home </a>
       </li>
       <li>
-        <a
-          [routerLink]="['/member/about']"
-          routerLinkActive="router-link-active"
-        >
-          about
-        </a>
+        <a [routerLink]="['/member/about']" routerLinkActive="router-link-active"> about </a>
       </li>
       <li>
-        <a
-          [routerLink]="['/member/hello-world']"
-          routerLinkActive="router-link-active"
-        >
+        <a [routerLink]="['/member/hello-world']" routerLinkActive="router-link-active">
           hello-world
         </a>
       </li>
       <li>
-        <a
-          [routerLink]="['/member/todomvc']"
-          routerLinkActive="router-link-active"
-        >
-          todomvc
+        <a [routerLink]="['/member/todomvc']" routerLinkActive="router-link-active"> todomvc </a>
+      </li>
+      <li>
+        <a [routerLink]="['/member/dynamic-cmp']" routerLinkActive="router-link-active">
+          dynamic-cmp
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/member/ng-template']" routerLinkActive="router-link-active">
+          ng-template
         </a>
       </li>
       <li class="flex items-center">
@@ -66,12 +58,12 @@ import { navigate } from '../services/layout.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
-  protected logout$ = getSubject<boolean>();
+  protected logout$ = getSubject<boolean>()
 
   logoutSub = this.logout$
     .pipe(
       takeUntilDestroyed(),
-      switchMap(() => navigate(['/guest/login'])),
+      switchMap(() => navigate(['/guest/login']))
     )
-    .subscribe();
+    .subscribe()
 }

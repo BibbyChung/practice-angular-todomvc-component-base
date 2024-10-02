@@ -1,14 +1,8 @@
-import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  output,
-  signal,
-} from '@angular/core';
-import { getBehaviorSubject } from '../lib/common/utils';
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, OnInit, output, signal } from '@angular/core'
+import { getBehaviorSubject } from '../lib/common/utils'
 
-type ItemType = { name: string };
+type ItemType = { name: string }
 
 @Component({
   selector: 'bb-hello-world',
@@ -17,12 +11,7 @@ type ItemType = { name: string };
   template: `
     <div class="flex gap-x-6">
       <div>
-        <input
-          class="bg-gray-200"
-          type="text"
-          [value]="nameS()"
-          (keyup)="change($event)"
-        />
+        <input class="bg-gray-200" type="text" [value]="nameS()" (keyup)="change($event)" />
         <br />
         Hello {{ nameS() }} !
       </div>
@@ -59,28 +48,28 @@ export class HelloWorldComponent implements OnInit {
     {
       name: 'RR',
     },
-  ];
-  protected greetingClicked = output<string>();
-  protected items$ = getBehaviorSubject<ItemType[]>([]);
-  protected nameS = signal('BBB_CCC');
+  ]
+  protected greetingClicked = output<string>()
+  protected items$ = getBehaviorSubject<ItemType[]>([])
+  protected nameS = signal('BBB_CCC')
 
   ngOnInit(): void {
-    this.items$.next(this.defaultValue);
-    this.greetingClicked.emit('test');
+    this.items$.next(this.defaultValue)
+    this.greetingClicked.emit('test')
   }
 
   change($event: KeyboardEvent) {
-    const elem = $event.target as HTMLInputElement;
-    this.nameS.set(elem.value);
+    const elem = $event.target as HTMLInputElement
+    this.nameS.set(elem.value)
   }
 
   toggerItems($event: MouseEvent) {
     if (this.items$.getValue().length === 0) {
-      this.items$.next(this.defaultValue);
+      this.items$.next(this.defaultValue)
     } else {
-      this.items$.next([]);
+      this.items$.next([])
     }
 
-    $event.preventDefault();
+    $event.preventDefault()
   }
 }

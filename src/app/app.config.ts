@@ -1,23 +1,16 @@
-import {
-  ApplicationConfig,
-} from '@angular/core';
-import {
-  PreloadAllModules,
-  provideRouter,
-  withComponentInputBinding,
-  withPreloading,
-} from '@angular/router';
-
-import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
+import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core'
+import { provideClientHydration } from '@angular/platform-browser'
+import { provideRouter, withComponentInputBinding } from '@angular/router'
+import { routes } from './app.routes'
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // ɵprovideZonelessChangeDetection(),
+    provideExperimentalZonelessChangeDetection(),
     provideRouter(
       routes,
-      withComponentInputBinding(),
-      withPreloading(PreloadAllModules),
-    ), provideClientHydration(),
+      withComponentInputBinding()
+      // withPreloading(PreloadAllModules), // preload module strategy
+    ),
+    provideClientHydration(),
   ],
-};
+}

@@ -1,22 +1,17 @@
-import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  viewChild,
-} from '@angular/core';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { map, switchMap, tap } from 'rxjs';
-import { getSubject } from '../../lib/common/utils';
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core'
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
+import { map, switchMap, tap } from 'rxjs'
+import { getSubject } from '../../lib/common/utils'
 import {
   delTodo,
   getTodos,
   setAllTodosCompleted,
   todoType,
   updateTodo,
-} from '../../lib/services/todolist.service';
-import { AddItemComponent } from './addItem.component';
-import { FooterComponent } from './footer.component';
+} from '../../lib/services/todolist.service'
+import { AddItemComponent } from './addItem.component'
+import { FooterComponent } from './footer.component'
 
 @Component({
   selector: 'bb-list',
@@ -48,10 +43,7 @@ import { FooterComponent } from './footer.component';
                 <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
                 <label>{{ item.title }}</label>
                 <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
-                <button
-                  (click)="destroyBtn$.next(item.id)"
-                  class="destroy"
-                ></button>
+                <button (click)="destroyBtn$.next(item.id)" class="destroy"></button>
               </div>
             </li>
           }
@@ -64,53 +56,50 @@ import { FooterComponent } from './footer.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent {
-  todos$ = getTodos();
+  todos$ = getTodos()
 
-  checkBoxElemRefS =
-    viewChild.required<ElementRef<HTMLInputElement>>('checkBoxElemRef');
-  checkBoxElem$ = toObservable(this.checkBoxElemRefS).pipe(
-    map((ref) => ref.nativeElement),
-  );
+  checkBoxElemRefS = viewChild.required<ElementRef<HTMLInputElement>>('checkBoxElemRef')
+  checkBoxElem$ = toObservable(this.checkBoxElemRefS).pipe(map((ref) => ref.nativeElement))
 
-  checkSelectAllBtn$ = getSubject<boolean>();
-  destroyBtn$ = getSubject<string>();
-  updateItemBtn$ = getSubject<{ $event: Event; todo: todoType }>();
+  checkSelectAllBtn$ = getSubject<boolean>()
+  destroyBtn$ = getSubject<string>()
+  updateItemBtn$ = getSubject<{ $event: Event; todo: todoType }>()
 
   checkSelectAllSub = this.checkSelectAllBtn$
     .pipe(
       takeUntilDestroyed(),
       switchMap(() => this.checkBoxElem$),
-      switchMap((elem) => setAllTodosCompleted(elem.checked)),
+      switchMap((elem) => setAllTodosCompleted(elem.checked))
     )
-    .subscribe();
+    .subscribe()
 
   destroySub = this.destroyBtn$
     .pipe(
       takeUntilDestroyed(),
-      tap((id) => delTodo(id)),
+      tap((id) => delTodo(id))
     )
-    .subscribe();
+    .subscribe()
 
   toggleCheckboxSub = this.todos$
     .pipe(
       takeUntilDestroyed(),
       map((todos) => {
-        const total = todos.length;
-        const selectedCount = todos.filter((a) => a.completed).length;
+        const total = todos.length
+        const selectedCount = todos.filter((a) => a.completed).length
         if (total === 0) {
-          return false;
+          return false
         }
-        return total === selectedCount;
+        return total === selectedCount
       }),
       switchMap((isSelected) =>
         this.checkBoxElem$.pipe(
           tap((elem) => {
-            elem.checked = isSelected;
-          }),
-        ),
-      ),
+            elem.checked = isSelected
+          })
+        )
+      )
     )
-    .subscribe();
+    .subscribe()
 
   updateItemSub = this.updateItemBtn$
     .pipe(
@@ -120,10 +109,10 @@ export class ListComponent {
         todo: obj.todo,
       })),
       tap((info) => {
-        const newObj = JSON.parse(JSON.stringify(info.todo)) as todoType;
-        newObj.completed = info.isChecked;
-        updateTodo(newObj);
-      }),
+        const newObj = JSON.parse(JSON.stringify(info.todo)) as todoType
+        newObj.completed = info.isChecked
+        updateTodo(newObj)
+      })
     )
-    .subscribe();
+    .subscribe()
 }

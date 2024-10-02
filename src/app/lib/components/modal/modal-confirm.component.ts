@@ -1,23 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Subject, tap } from 'rxjs';
-import { getSubject } from '../../common/utils';
-import { closeModal } from '../../services/layout.service';
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { Subject, tap } from 'rxjs'
+import { getSubject } from '../../common/utils'
+import { closeModal } from '../../services/layout.service'
 
 export type ModalConfirmType = {
-  msg: string;
-  ok$: Subject<boolean>;
-};
+  msg: string
+  ok$: Subject<boolean>
+}
 
 @Component({
   selector: 'bb-modal-confirm',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <article
-      class="relative m-0 flex flex-col rounded-md bg-gray-50 sm:my-16 sm:min-w-[40vw]"
-    >
+    <article class="relative m-0 flex flex-col rounded-md bg-gray-50 sm:my-16 sm:min-w-[40vw]">
       <header class="flex items-center justify-between p-4">
         <h2 class="m-0 max-w-[calc(100%_-_3rem)] text-xl font-medium">Info</h2>
         <button
@@ -52,9 +50,7 @@ export type ModalConfirmType = {
           <span class="flex items-center justify-center space-x-2">Close</span>
         </button>
         <button type="button" class="btn" (click)="props().ok$.next(true)">
-          <span class="flex items-center justify-center space-x-2">
-            confirm
-          </span>
+          <span class="flex items-center justify-center space-x-2"> confirm </span>
         </button>
       </footer>
     </article>
@@ -63,18 +59,18 @@ export type ModalConfirmType = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalConfirmComponent {
-  props = input.required<ModalConfirmType>();
-  close$ = getSubject<boolean>();
+  props = input.required<ModalConfirmType>()
+  close$ = getSubject<boolean>()
 
   closeSub = this.close$
     .pipe(
       takeUntilDestroyed(),
       tap(() => {
-        this.props().ok$.next(false);
+        this.props().ok$.next(false)
       }),
-      tap(() => closeModal()),
+      tap(() => closeModal())
     )
-    .subscribe();
+    .subscribe()
 
   constructor() {}
 }

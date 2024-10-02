@@ -1,18 +1,14 @@
-import { setTDK } from './../lib/services/layout.service';
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, switchMap, tap } from 'rxjs';
-import { getEnvSetting, getSubject } from '../lib/common/utils';
+import { setTDK } from './../lib/services/layout.service'
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, input } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { filter, switchMap, tap } from 'rxjs'
+import { getEnvSetting, getSubject } from '../lib/common/utils'
 import {
   ModalConfirmComponent,
   ModalConfirmType,
-} from '../lib/components/modal/modal-confirm.component';
-import {
-  ModalType,
-  closeModal,
-  showModal,
-} from '../lib/services/layout.service';
+} from '../lib/components/modal/modal-confirm.component'
+import { ModalType, closeModal, showModal } from '../lib/services/layout.service'
 
 @Component({
   selector: 'bb-home',
@@ -26,9 +22,9 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  protected confirm$ = getSubject<boolean>();
-  protected id = input<number>(0);
-  protected envSetting = getEnvSetting();
+  protected confirm$ = getSubject<boolean>()
+  protected id = input<number>(0)
+  protected envSetting = getEnvSetting()
 
   tdkSub = setTDK({
     title: 'home title',
@@ -36,24 +32,24 @@ export class HomeComponent {
     keywords: ['11', '22', '33'],
   })
     .pipe(takeUntilDestroyed())
-    .subscribe();
+    .subscribe()
 
   confirmSub = this.confirm$
     .pipe(
       takeUntilDestroyed(),
       switchMap(() => {
-        const ok$ = getSubject<boolean>();
+        const ok$ = getSubject<boolean>()
         showModal<ModalType<ModalConfirmType>>({
           component: ModalConfirmComponent,
           props: {
             msg: '這是一個 confirm !',
             ok$,
           },
-        });
-        return ok$;
+        })
+        return ok$
       }),
       filter((a) => a),
-      tap(() => closeModal()),
+      tap(() => closeModal())
     )
-    .subscribe();
+    .subscribe()
 }
