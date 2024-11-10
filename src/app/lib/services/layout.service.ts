@@ -1,8 +1,8 @@
 import { Renderer2, Type } from '@angular/core'
+import { Meta, MetaDefinition, Title } from '@angular/platform-browser'
 import { NavigationExtras, Router } from '@angular/router'
 import { combineLatest, delay, filter, from, map, of, switchMap, take, tap } from 'rxjs'
 import { getBehaviorSubject } from '../common/utils'
-import { Title, Meta, MetaDefinition } from '@angular/platform-browser'
 
 const isClient$ = getBehaviorSubject(true)
 export const setIsClient = (isClient: boolean) => isClient$.next(isClient)
@@ -51,7 +51,7 @@ export type ModalType<T extends ModalPropsType> = {
   component: Type<unknown>
   props?: T
 }
-const modals$ = getBehaviorSubject<Array<ModalType<ModalPropsType>>>([])
+const modals$ = getBehaviorSubject<ModalType<ModalPropsType>[]>([])
 export const getModals = () => modals$.asObservable()
 
 export const showModal = <T extends ModalType<ModalPropsType>>(obj: T) => {
@@ -59,7 +59,7 @@ export const showModal = <T extends ModalType<ModalPropsType>>(obj: T) => {
   modals$.next(arr)
 }
 export const closeModal = () => {
-  const arr = modals$.value
+  const arr = modals$.getValue()
   arr.pop()
   modals$.next(arr)
 }
