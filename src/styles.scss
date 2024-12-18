@@ -38,6 +38,13 @@ https://github.com/csilva2810/notifier/blob/master/css/notifier.css
   @apply text-black bg-gray-100;
 }
 
+.input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5;
+}
+
+.input::focus {
+  @apply ring-blue-500 border-blue-500;
+}
 // --- todomvc ---
 
 .todoapp {

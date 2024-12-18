@@ -36,6 +36,12 @@ import { navigate } from '../services/layout.service'
           ng-template
         </a>
       </li>
+      <li>
+        <a [routerLink]="['/member/reactive-form']" routerLinkActive="router-link-active">
+          reactive-form
+        </a>
+      </li>
+
       <li class="flex items-center">
         <button (click)="logout$.next(true)" class="btn">logout</button>
       </li>

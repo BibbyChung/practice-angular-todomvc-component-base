@@ -38,6 +38,11 @@ const routes: Routes = [
         loadComponent: () =>
           import('./ng-template/ng-template.component').then((c) => c.NgTemplateComponent),
       },
+      {
+        path: 'reactive-form',
+        loadComponent: () =>
+          import('./reactive-form/form.component').then((c) => c.FormComponent),
+      }
     ],
   },
 ]
