@@ -1,7 +1,7 @@
-import { NumberInputComponent } from './number-input.component';
+import { NumberInputComponent } from './number-input.component'
 import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms'
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms'
 import { getSubject } from '../../lib/common/utils'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { filter, tap } from 'rxjs'
@@ -22,8 +22,10 @@ import { filter, tap } from 'rxjs'
         <div>i02: <bb-number-input className="input w-80" formControlName="i02" /></div>
         <button class="btn">submit</button>
       </form>
-      <div>
-        {{form01.value|json}}
+      <div class="mt-2">
+        {{ form01.value | json }}
+        <hr />
+        {{ form01.valid }} -> {{ form01.get('i02')?.errors | json }}
       </div>
     </div>
   `,
@@ -37,7 +39,7 @@ export class FormComponent {
 
   form01 = this.fb.group({
     i01: [''],
-    i02: [''],
+    i02: ['', [Validators.required]],
   })
 
   submitSub = this.submit$
