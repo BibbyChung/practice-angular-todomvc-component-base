@@ -40,9 +40,13 @@ const routes: Routes = [
       },
       {
         path: 'reactive-form',
+        loadComponent: () => import('./reactive-form/form.component').then((c) => c.FormComponent),
+      },
+      {
+        path: 'dragdrop',
         loadComponent: () =>
-          import('./reactive-form/form.component').then((c) => c.FormComponent),
-      }
+          import('./rxjs/dragdrop/dragdrop.component').then((c) => c.DragdropComponent),
+      },
     ],
   },
 ]

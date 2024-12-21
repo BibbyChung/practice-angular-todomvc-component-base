@@ -41,6 +41,9 @@ import { navigate } from '../services/layout.service'
           reactive-form
         </a>
       </li>
+      <li>
+        <a [routerLink]="['/member/dragdrop']" routerLinkActive="router-link-active"> dragdrop </a>
+      </li>
 
       <li class="flex items-center">
         <button (click)="logout$.next(true)" class="btn">logout</button>
