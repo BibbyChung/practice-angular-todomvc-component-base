@@ -6,15 +6,14 @@ import { getSubject } from '../lib/common/utils'
 import { notify, setTDK } from '../lib/services/layout.service'
 
 @Component({
-  selector: 'bb-about',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-about',
+    imports: [CommonModule],
+    template: `
     <p>abount works!</p>
     <button class="btn" (click)="showSuccess$.next(true)">notify success</button>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutComponent {
   protected showSuccess$ = getSubject<boolean>()

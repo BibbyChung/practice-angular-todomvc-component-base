@@ -7,10 +7,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { filter, tap } from 'rxjs'
 
 @Component({
-  selector: 'bb-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NumberInputComponent],
-  template: `
+    selector: 'bb-form',
+    imports: [CommonModule, ReactiveFormsModule, NumberInputComponent],
+    template: `
     <div class="max-w-screen-sm">
       <form
         class="flex flex-col items-start gap-4"
@@ -29,8 +28,8 @@ import { filter, tap } from 'rxjs'
       </div>
     </div>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent {
   fb = inject(FormBuilder)

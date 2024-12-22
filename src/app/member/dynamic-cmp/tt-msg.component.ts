@@ -4,17 +4,16 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { interval, tap } from 'rxjs'
 
 @Component({
-  selector: 'bb-tt-msg',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-tt-msg',
+    imports: [CommonModule],
+    template: `
     <div class="my-1 border border-solid border-pink-300 p-2">
       count: {{ count() }}, uuid-msg: {{ msg() }}
       <button class="btn" (click)="clickIt(); $event.preventDefault()">clickIt</button>
     </div>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TtMsgComponent {
   msg = input.required<string>()

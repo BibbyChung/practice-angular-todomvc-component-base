@@ -11,10 +11,9 @@ export type ModalConfirmType = {
 }
 
 @Component({
-  selector: 'bb-modal-confirm',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-modal-confirm',
+    imports: [CommonModule],
+    template: `
     <article class="relative m-0 flex flex-col rounded-md bg-gray-50 sm:my-16 sm:min-w-[40vw]">
       <header class="flex items-center justify-between p-4">
         <h2 class="m-0 max-w-[calc(100%_-_3rem)] text-xl font-medium">Info</h2>
@@ -55,8 +54,8 @@ export type ModalConfirmType = {
       </footer>
     </article>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalConfirmComponent {
   props = input.required<ModalConfirmType>()

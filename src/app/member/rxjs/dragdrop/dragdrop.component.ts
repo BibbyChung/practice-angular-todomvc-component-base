@@ -5,16 +5,15 @@ import { getWindow } from '../../../lib/services/layout.service'
 import { getDragdropInfo } from './dragdrop.service'
 
 @Component({
-  selector: 'bb-drapdrop',
-  standalone: true,
-  imports: [],
-  template: `
+    selector: 'bb-drapdrop',
+    imports: [],
+    template: `
     <div #boundaryRef class="relative  w-[800px] h-[400px] bg-yellow-300">
       <p #ballRef class="absolute h-12 w-12 rounded-full bg-green-600"></p>
     </div>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DragdropComponent {
   boundaryRefS = viewChild.required<ElementRef<HTMLElement>>('boundaryRef')

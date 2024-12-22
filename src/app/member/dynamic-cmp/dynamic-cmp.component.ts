@@ -12,10 +12,9 @@ import { getSubject, getUUID } from '../../lib/common/utils'
 import { TtMsgComponent } from './tt-msg.component'
 
 @Component({
-  selector: 'bb-dynamic-cmp',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-dynamic-cmp',
+    imports: [CommonModule],
+    template: `
     <button class="btn mx-1" (click)="addTTMsgComponent$.next(true)">
       create a hello word component
     </button>
@@ -28,8 +27,8 @@ import { TtMsgComponent } from './tt-msg.component'
     <hr />
     <ng-container #vc></ng-container>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicCmpComponent {
   // injector = inject(Injector);

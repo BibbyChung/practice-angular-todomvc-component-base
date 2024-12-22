@@ -6,10 +6,9 @@ import { getSubject } from '../../lib/common/utils'
 import { addTodo } from '../../lib/services/todolist.service'
 
 @Component({
-  selector: 'bb-add-item',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-add-item',
+    imports: [CommonModule],
+    template: `
     <header class="header">
       <h1>todos</h1>
       <form (submit)="submitBtn$.next(true); $event.preventDefault()">
@@ -17,8 +16,8 @@ import { addTodo } from '../../lib/services/todolist.service'
       </form>
     </header>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddItemComponent {
   inputRefS = viewChild.required<ElementRef<HTMLInputElement>>('inputRef')

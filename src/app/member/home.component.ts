@@ -11,15 +11,14 @@ import {
 import { ModalType, closeModal, showModal } from '../lib/services/layout.service'
 
 @Component({
-  selector: 'bb-home',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-home',
+    imports: [CommonModule],
+    template: `
     <p>home works! => id:{{ id() }}, env: {{ envSetting.env }}</p>
     <button class="btn" (click)="confirm$.next(true)">comfirm</button>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
   protected confirm$ = getSubject<boolean>()

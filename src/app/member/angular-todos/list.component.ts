@@ -14,10 +14,9 @@ import { AddItemComponent } from './addItem.component'
 import { FooterComponent } from './footer.component'
 
 @Component({
-  selector: 'bb-list',
-  standalone: true,
-  imports: [CommonModule, AddItemComponent, FooterComponent],
-  template: `
+    selector: 'bb-list',
+    imports: [CommonModule, AddItemComponent, FooterComponent],
+    template: `
     <section class="todoapp">
       <bb-add-item />
       <section class="main">
@@ -52,8 +51,8 @@ import { FooterComponent } from './footer.component'
       <bb-footer />
     </section>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
   todos$ = getTodos()

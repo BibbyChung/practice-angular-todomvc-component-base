@@ -22,10 +22,9 @@ import { Observer, tap } from 'rxjs'
 import { getBehaviorSubject, getSubject } from '../../lib/common/utils'
 
 @Component({
-  selector: 'bb-number-input',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  template: `
+    selector: 'bb-number-input',
+    imports: [CommonModule, ReactiveFormsModule],
+    template: `
     <input
       #ii
       [class]="classNameS()"
@@ -36,15 +35,15 @@ import { getBehaviorSubject, getSubject } from '../../lib/common/utils'
     />
     <input type="hidden" [formControl]="formControl" />
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR, // set NG_VALUE_ACCESSOR
-      useExisting: forwardRef(() => NumberInputComponent),
-      multi: true,
-    },
-  ],
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR, // set NG_VALUE_ACCESSOR
+            useExisting: forwardRef(() => NumberInputComponent),
+            multi: true,
+        },
+    ]
 })
 export class NumberInputComponent implements ControlValueAccessor {
   injector = inject(Injector)

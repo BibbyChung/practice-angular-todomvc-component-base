@@ -12,10 +12,9 @@ import {
 } from '../../lib/services/todolist.service'
 
 @Component({
-  selector: 'bb-footer',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-footer',
+    imports: [CommonModule],
+    template: `
     <footer class="footer">
       <span class="todo-count">
         @if ((uncompletedCount$ | async) === 1) {
@@ -59,8 +58,8 @@ import {
       </div>
     </footer>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent {
   removeAllTodosBtn$ = getSubject<boolean>()

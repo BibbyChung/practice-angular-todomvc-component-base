@@ -7,10 +7,9 @@ import { getSubject } from '../common/utils'
 import { navigate } from '../services/layout.service'
 
 @Component({
-  selector: 'bb-menu',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  template: `
+    selector: 'bb-menu',
+    imports: [CommonModule, RouterModule],
+    template: `
     <ul class="flex text-blue-400">
       <li>
         <a [routerLink]="['/member/home']" routerLinkActive="router-link-active"> home </a>
@@ -50,7 +49,7 @@ import { navigate } from '../services/layout.service'
       </li>
     </ul>
   `,
-  styles: `
+    styles: `
     .router-link-active {
       @apply text-red-400;
     }
@@ -64,7 +63,7 @@ import { navigate } from '../services/layout.service'
       }
     }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent {
   protected logout$ = getSubject<boolean>()

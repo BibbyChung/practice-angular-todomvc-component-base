@@ -13,10 +13,9 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
 import { combineLatest, switchMap, tap } from 'rxjs'
 
 @Component({
-  selector: 'bb-ng-template',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-ng-template',
+    imports: [CommonModule],
+    template: `
     <ng-template #sTmp let-ctx>
       <div class="my-2 border border-purple-400 p-2">
         <div>{{ ctx.title }}</div>
@@ -61,8 +60,8 @@ import { combineLatest, switchMap, tap } from 'rxjs'
 
     <ng-container #vc></ng-container>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NgTemplateComponent {
   injector = inject(Injector)

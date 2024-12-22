@@ -10,7 +10,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ng18": {
+    "ng19": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -48,7 +48,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ng18",
+            "outputPath": "dist/ng19",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [],
@@ -97,10 +97,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ng18:build:production"
+              "buildTarget": "ng19:build:production"
             },
             "development": {
-              "buildTarget": "ng18:build:development"
+              "buildTarget": "ng19:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -108,7 +108,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "ng18:build"
+            "buildTarget": "ng19:build"
           }
         },
         "test": {

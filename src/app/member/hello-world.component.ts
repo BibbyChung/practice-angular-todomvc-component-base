@@ -5,10 +5,9 @@ import { getBehaviorSubject } from '../lib/common/utils'
 type ItemType = { name: string }
 
 @Component({
-  selector: 'bb-hello-world',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
+    selector: 'bb-hello-world',
+    imports: [CommonModule],
+    template: `
     <div class="flex gap-x-6">
       <div>
         <input class="bg-gray-200" type="text" [value]="nameS()" (keyup)="change($event)" />
@@ -34,8 +33,8 @@ type ItemType = { name: string }
       </div>
     </div>
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelloWorldComponent implements OnInit {
   protected defaultValue = [

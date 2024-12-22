@@ -3,10 +3,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ListComponent } from './list.component'
 
 @Component({
-  selector: 'bb-todos',
-  standalone: true,
-  imports: [CommonModule, ListComponent],
-  template: `
+    selector: 'bb-todos',
+    imports: [CommonModule, ListComponent],
+    template: `
     <div class="flex justify-center">
       <div class="min-w-2xl max-w-xl">
         <bb-list />
@@ -17,11 +16,11 @@ import { ListComponent } from './list.component'
       </div>
     </div>
   `,
-  styles: `
+    styles: `
     :host {
       display: contents;
     }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodosComponent {}

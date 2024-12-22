@@ -13,14 +13,13 @@ import {
 } from './lib/services/layout.service'
 
 @Component({
-  selector: 'bb-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, ModalContainerComponent],
-  template: `
+    selector: 'bb-root',
+    imports: [RouterOutlet, CommonModule, ModalContainerComponent],
+    template: `
     <router-outlet />
     <bb-modal-container />
   `,
-  styles: [],
+    styles: []
 })
 export class AppComponent {
   // title = 'ng18';

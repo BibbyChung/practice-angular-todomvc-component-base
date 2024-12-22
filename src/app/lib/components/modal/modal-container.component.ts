@@ -6,10 +6,9 @@ import { getBehaviorSubject, getSubject } from '../../common/utils'
 import { closeModal, getModals } from '../../services/layout.service'
 
 @Component({
-  selector: 'bb-modal-container',
-  standalone: true,
-  imports: [CommonModule, NgComponentOutlet],
-  template: `
+    selector: 'bb-modal-container',
+    imports: [CommonModule, NgComponentOutlet],
+    template: `
     @for (item of modals$ | async; track $index) {
       <div class="fixed inset-0 z-20 h-screen w-screen overflow-y-auto">
         <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
@@ -32,8 +31,8 @@ import { closeModal, getModals } from '../../services/layout.service'
       </div>
     }
   `,
-  styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: ``,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalContainerComponent {
   modals$ = getModals()
