@@ -7,9 +7,9 @@ import { getSubject } from '../common/utils'
 import { navigate } from '../services/layout.service'
 
 @Component({
-    selector: 'bb-menu',
-    imports: [CommonModule, RouterModule],
-    template: `
+  selector: 'bb-menu',
+  imports: [CommonModule, RouterModule],
+  template: `
     <ul class="flex text-blue-400">
       <li>
         <a [routerLink]="['/member/home']" routerLinkActive="router-link-active"> home </a>
@@ -35,6 +35,11 @@ import { navigate } from '../services/layout.service'
           ng-template
         </a>
       </li>
+      <li class="flex items-center">
+        <button (click)="logout$.next(true)" class="btn">logout</button>
+      </li>
+    </ul>
+    <ul class="-mt-3 flex text-blue-400">
       <li>
         <a [routerLink]="['/member/reactive-form']" routerLinkActive="router-link-active">
           reactive-form
@@ -43,13 +48,14 @@ import { navigate } from '../services/layout.service'
       <li>
         <a [routerLink]="['/member/dragdrop']" routerLinkActive="router-link-active"> dragdrop </a>
       </li>
-
-      <li class="flex items-center">
-        <button (click)="logout$.next(true)" class="btn">logout</button>
+      <li>
+        <a [routerLink]="['/member/infinite-scroll']" routerLinkActive="router-link-active">
+          infinite-scroll
+        </a>
       </li>
     </ul>
   `,
-    styles: `
+  styles: `
     .router-link-active {
       @apply text-red-400;
     }
@@ -63,7 +69,7 @@ import { navigate } from '../services/layout.service'
       }
     }
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
   protected logout$ = getSubject<boolean>()
