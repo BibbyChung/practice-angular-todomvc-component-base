@@ -47,6 +47,13 @@ const routes: Routes = [
         loadComponent: () =>
           import('./rxjs/dragdrop/dragdrop.component').then((c) => c.DragdropComponent),
       },
+      {
+        path: 'infinite-scroll',
+        loadComponent: () =>
+          import('./rxjs/infinite-scroll/infinite-scroll.component').then(
+            (c) => c.InfiniteScrollComponent
+          ),
+      },
     ],
   },
 ]
