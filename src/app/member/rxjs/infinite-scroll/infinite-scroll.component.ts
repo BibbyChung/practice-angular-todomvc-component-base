@@ -9,8 +9,8 @@ import {
   viewChild,
 } from '@angular/core'
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop'
-import { scan, switchMap, tap } from 'rxjs'
-import { getSubject } from '../../../lib/common/utils'
+import { filter, map, scan, switchMap, tap } from 'rxjs'
+import { getBehaviorSubject } from '../../../lib/common/utils'
 import { getFakeData } from './fake-data.service'
 
 @Component({
@@ -24,7 +24,11 @@ import { getFakeData } from './fake-data.service'
         }
       </div>
     }
-    <div #loading class="flex h-8 items-center justify-center bg-yellow-400">
+    <div
+      [class]="{ hidden: (isLoadingShow$ | async) === false }"
+      #loading
+      class="flex h-8 items-center justify-center bg-yellow-400"
+    >
       <span>loading....</span>
     </div>
   `,
@@ -38,14 +42,15 @@ import { getFakeData } from './fake-data.service'
 export class InfiniteScrollComponent implements OnDestroy {
   injector = inject(Injector)
   loadingS = viewChild.required<ElementRef<HTMLElement>>('loading')
-  fetchData$ = getSubject<boolean>()
+  fetchData$ = getBehaviorSubject(0)
+  isLoadingShow$ = getBehaviorSubject(true)
 
   intersectionObserver$ = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log('entry.isIntersecting')
-          this.fetchData$.next(true)
+          this.fetchData$.next(this.fetchData$.value + 1)
         }
       })
     },
@@ -57,7 +62,14 @@ export class InfiniteScrollComponent implements OnDestroy {
   )
 
   data$ = this.fetchData$.pipe(
-    switchMap(() => getFakeData()),
+    switchMap((index) => getFakeData(index)),
+    map((info) => {
+      if (info.data.length <= 0) {
+        this.isLoadingShow$.next(false)
+      }
+      return info.data
+    }),
+    filter((a) => a.length > 0),
     scan((pre, cur) => {
       return [...pre, ...cur]
     }, [] as string[])
